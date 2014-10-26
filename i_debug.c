@@ -4,7 +4,8 @@
 // Usage - To use this software,
 //   1. DebugSkip(4); Print out every 5th value. Use any number you want. The default is 0 (no skips).
 //   2. Use DebugInt, DebugFloat, or DebugBool to collect the debug information.
-//   3. Place the DebugPrint(); after all the debugInt calls. (Takes 10ms or less to run).
+//   3. Select the output method (1 or more) by calling one time: Debug2File(), Debug2NXT() or Debug2Stream();
+//   4. Place the DebugPrint(); after all the debugInt calls. (Takes 10ms or less to run).
 //
 //   The data is output to the debug stream and to a file called "debug.txt"
 //   The data going to the file is limited to 10000 characters. This is about 151 rows with 10 columns.
@@ -19,9 +20,9 @@ int debugSkip=0;
 int debugSkipI=0;
 int iFrameCntDebug=0;
 
-short DebugFile;
+TFileHandle DebugFile;
 TFileIOResult isOk;
-int nFileSize=10000;
+short nFileSize=10000;
 string debugFileName="debug.txt";
 
 // ---------------- Capture integer debug information ---------------------//
@@ -114,7 +115,7 @@ void DebugPrint(){
           strcat(str,debugColName[i]);
           strcat(str,"=");
 	        strcat(str,debugValue[i]);
-	        nxtDisplayTextLine(i+2,str);
+	        displayTextLine(i+2,str);
 	      }
       }
       if (Debug2FileBool){
