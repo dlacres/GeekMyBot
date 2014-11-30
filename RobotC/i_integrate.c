@@ -15,6 +15,15 @@ int Integrate(int in, float min, float max, float dt, float &inZ1){
 	if (inZ1<min) inZ1=min;
 	return(inZ1);
 }
+int IntegrateInt(int in, int min, int max, int &inZ1){
+
+  inZ1=inZ1+in;
+
+	if (inZ1>max) inZ1=max;
+	if (inZ1<min) inZ1=min;
+	return(inZ1);
+}
+
 //#define TEST_INTEGRATE
 #ifdef TEST_INTEGRATE //-------------------------------------------------
 // Unit Test

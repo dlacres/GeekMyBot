@@ -1,4 +1,4 @@
-// As a software designer, I want to ignore small noisy signals so that outputs (like motors) don't buzz or move.
+// As a programmer I want to ignore small noisy signals so that outputs (like motors) don't buzz or move.
 // Usage:
 // Return a value of 0 if the signal is inside the deadZone
 // outInt = DeadZone(inInt, sizeInt);
