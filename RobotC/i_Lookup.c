@@ -34,7 +34,7 @@ int Lookup1(int in){
 	return(out);
 }
 //----------Test Code------------//
-#define TEST_DEBUG //-------------------------------------------------
+//#define TEST_DEBUG //-------------------------------------------------
 #ifdef TEST_DEBUG
 
 #pragma DebuggerWindows ("debugStream")// Bring up the debug stream window
