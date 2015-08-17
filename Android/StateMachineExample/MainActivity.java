@@ -19,8 +19,11 @@ public class MainActivity extends Activity {
     private EditText editTexta;
     private EditText editTextb;
     private Button btnStep;
-    //private RiseEdgeTrigger riseEdgeTrigger;
+    private String outAStr;
+    private String outBStr;
+    private String in1Str="None";
     private StateMachine sm;
+    private RiseEdgeTrigger ret = new RiseEdgeTrigger();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +32,35 @@ public class MainActivity extends Activity {
         setContentView(R.layout.linear_layout);
 
         //this.riseEdgeTrigger = new RiseEdgeTrigger();
-        this.sm = new StateMachine();
+        sm = new StateMachine(this);
 
-
-        this.btnStep = (Button) findViewById(R.id.stepId);
-        this.editText1 = (EditText) findViewById(R.id.editText1ID);
-        this.editText2 = (EditText) findViewById(R.id.editText2ID);
-        this.editTexta = (EditText) findViewById(R.id.editTextaID);
-        this.editTextb = (EditText) findViewById(R.id.editTextbID);
+        btnStep = (Button) findViewById(R.id.stepId);
+        editText1 = (EditText) findViewById(R.id.editText1ID);
+        editText2 = (EditText) findViewById(R.id.editText2ID);
+        editTexta = (EditText) findViewById(R.id.editTextaID);
+        editTextb = (EditText) findViewById(R.id.editTextbID);
     }
 
     public void Step(View view) {
         String s1="None";
 
-        s1=editText1.getText().toString();
-        sm.onStep(s1);
-        editTexta.setText(sm.getOut1());
-        editTextb.setText(sm.getOut2());
+        in1Str=editText1.getText().toString();
+        sm.onStep();
+        editTexta.setText(outAStr);
+        editTextb.setText(outBStr);
 
     }
+    public void setOutAStr(String outAStr){
+        this.outAStr=outAStr;
+    }
+    public void setOutBStr(String outBStr){
+        this.outBStr=outBStr;
+    }
+    public Boolean getIn1(){
+        boolean b;
+        if (in1Str.equals("t")) b=true;
+        else b=false;
 
+        return (ret.step(b));
+    }
 }

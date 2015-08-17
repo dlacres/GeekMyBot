@@ -6,7 +6,6 @@ package com.dlacres2.helloworld;
 public interface Event {
 
     public void onStep();
-    public boolean isTriggered(StateMachine sm);
-    public State getFromState();
+    public boolean isTriggered();
     public State getToState();
 }

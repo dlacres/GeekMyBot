@@ -1,75 +1,60 @@
 package com.dlacres2.helloworld;
 
+import java.util.List;
+
 /**
  * Created by dllempia on 7/20/2015.
  */
 public class StateMachine {
 
-    public enum ColorEnum{RED,GREEN};
-    State stateRed = new StateColor(ColorEnum.RED);
-    State stateGreen = new StateColor(ColorEnum.GREEN);
-    Event red2Green = new EventColor(stateRed, stateGreen);
-    Event green2Red = new EventColor(stateGreen, stateRed);
-    Event eventList[] = { red2Green, green2Red };
-    State activeState = stateRed;
+    State stateRed;
+    State stateGreen;
+    Event red2Green;
+    Event green2Red;
+    State activeState;
+    MainActivity ma;
 
-    String out1="None";
-    String out2="None";
-    String in1="None";
+    StateMachine(MainActivity ma){
+        this.ma=ma;
+        // Create the states
+        stateRed = new ColorState(ma, "Red State Name");
+        stateGreen = new ColorState(ma, "Green State Name");
+        // Create the events
+        red2Green = new ButtonEvent(ma, stateGreen);
+        green2Red = new ButtonEvent(ma, stateRed);
+        // Add the events to the "from state"
+        stateRed.addEvent(red2Green);
+        stateGreen.addEvent(green2Red);
 
-    StateMachine(){
-
+        activeState = stateRed;
     }
 
-    public void onStep(String in1){
-        this.in1=in1;
+    public void onStep(){
 
-        // Check transitions leaving active state
-        for (int i = 0; i < eventList.length; i++) {
+        List<Event> el = activeState.getEventList();
 
-            // Does this event leave the active state?
-            if (eventList[i].getFromState()==activeState){
+        //Log.i("info", "Made it to 1");
+        for (Event el1 : el){
+            //Log.i("info", "Made it to 2");
+            if (el1.isTriggered()){
+                // If the event happened, run exit, step, and entry code
+                activeState.onExit();
+                el1.onStep();
 
-                //Check all events that leave this state
-                if (eventList[i].isTriggered(this)){
-
-                    // If the event happened, run exit, step, and entry code
-                    activeState.onExit();
-                    eventList[i].onStep();
-
-                    // Update the active state
-                    activeState = eventList[i].getToState();
-                    activeState.onEntry();
-                    break; // Do not check the rest of the trasitions
-                }
+                // Update the active state
+                activeState = el1.getToState();
+                activeState.onEntry();
+                break; // Do not check the rest of the trasitions
             }
         }
         // Run active state
-        activeState.onStep(this);
+        activeState.onStep();
     }
-    public void setOut1(StateMachine.ColorEnum color) {
-        if (StateMachine.ColorEnum.RED == color)
-            out1="Red";
-        else if (StateMachine.ColorEnum.GREEN == color)
-            out1="Green";
-        else
-            out1="None";
-    }
-    public String getOut2(){
-        if (activeState==stateGreen) out2="Green State";
-        if (activeState==stateRed) out2="Red State";
+    public String getActiveState(){
+        String actStr="None";
+        if (activeState==stateGreen) actStr="Green State Active";
+        if (activeState==stateRed) actStr="Red State Active";
 
-        return(out2);
+        return(actStr);
     }
-    public String getOut1(){
-
-        return(out1);
-    }
-    public boolean getIn1(){
-        if (in1.equals("t"))
-            return(true);
-
-        return (false);
-    }
-
 }
