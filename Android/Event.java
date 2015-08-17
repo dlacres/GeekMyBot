@@ -7,6 +7,5 @@ public interface Event {
 
     public void onStep();
     public boolean isTriggered();
-    public State getFromState();
     public State getToState();
 }
