@@ -7,12 +7,15 @@ import java.util.List;
  * Created by dllempia on 7/20/2015.
  *
  * Copy this template and rename it with the name of your behavior. i.e. Behavior_Forward.
- * Inputs and Outputs are put in the Behaviors_xx file. Access them using be.xx
+ * Inputs and Outputs are put in the Behaviors_xx file. Access them using gd.xx
  * Add the behavior to the Behaviors_xx file.
  * Add inputs and outputs to the Behaviors_xx file.
  * Pass parameters in through the Event_Template Constructor.
  */
 public class Behavior_Template implements Behavior {
+    // Change the name of this behavior (for diagnostics)
+    String behaviorName="none";
+
     // Add code for onEntry. This method is called one time when entering the behavior.
     public void onEntry(){
 
@@ -21,17 +24,16 @@ public class Behavior_Template implements Behavior {
     public void onExit(){
 
     }
-    // Add code for onStep. This method is called from loop as long as the behavior is active.
-    public void onStep(){
+    // Add code for onLoop. This method is called from loop as long as the behavior is active.
+    public void onLoop(){
 
     }
 
-    // Do not change this code
+    // Add new classes as needed
     List <Event> eventList;
-    String behaviorName="none";
-    Behavior be;
-    public Behavior_Template(Behavior be, String behaviorName){
-        this.be=be;
+    GlobalData gd;
+    public Behavior_Template(GlobalData gd, String behaviorName){
+        this.gd=gd;
         eventList=new ArrayList<Event>();
         this.behaviorName=behaviorName;
     }
@@ -44,6 +46,6 @@ public class Behavior_Template implements Behavior {
 
     @Override
     public String getName() {
-        return null;
+        return(this.behaviorName);
     }
 }

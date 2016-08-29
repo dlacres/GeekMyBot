@@ -8,7 +8,7 @@ import java.util.List;
 public interface Behavior {
     void onEntry();
     void onExit();
-    void onStep();
+    void onLoop();
     void addEvent(Event newEv);
     String getName();
     List<Event> getEventList();

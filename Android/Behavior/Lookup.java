@@ -5,33 +5,42 @@ package com.qualcomm.ftcrobotcontroller.geekmybot;
  */
 public class Lookup {
 
-    float [][] table_1={
+    /*float [][] table_1={
         {0, 0},
         {.03f, 0},
         {.05f, .03f},
         {.060f, .040f},
         {.0100f, .080f},
     };
-    float s=5;
+    float s=5;*/
+    float [][] table_1;
+    float s;
 
-    public Lookup(){
+    public Lookup(float [][] table_1, float matrixSize){
+        this.table_1=table_1;
+        this.s=matrixSize;
     }
 
     int i;
     float num,den;
 
-    float Lookup1(int in){
-        float out = 0;
+    float calculate(float in){
+        float out = 0.0f;
+        float inAbs;
+
+        inAbs=in;
+        if (in<0) inAbs=-in;
 
         // Find the x region we are in
         for (i=0; i<s-1; ++i){
-            if (table_1[i][0]<=in && table_1[i+1][0]>in)
+            if (table_1[i][0]<=inAbs && table_1[i+1][0]>inAbs)
                 break;
         }
-        num=table_1[i+1][0]-table_1[i][0];
+        num=table_1[i+1][1]-table_1[i][1];
         den=table_1[i+1][0]-table_1[i][0];
-        out=(num*in)/den + table_1[i][0] - (num*table_1[i][0])/den;
-        //out = (int)((float)(table_1[i+1][y]-table_1[i][y])/((float)(table_1[i+1][x]-table_1[i][x])))*(float)in;
+        out=(num*inAbs)/den + table_1[i][1] - (num*table_1[i][0])/den;
+
+        if (in<0) out=-out;
 
         return(out);
     }

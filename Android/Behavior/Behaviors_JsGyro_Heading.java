@@ -5,22 +5,21 @@ import java.util.List;
 /**
  * Created by dllempia on 7/20/2015.
  */
-public class Behaviors_Template {
-
-    // Public SM Inputs and Outputs
-
-    // Declare the states and events
+public class Behaviors_JsGyro_Heading {
 
     // Add the states and events used in this state machine
-    public Behaviors_Template(GlobalData gd){
+    public Behaviors_JsGyro_Heading(GlobalData gd){
+
         // Create the states - Input is the name of the state for debug
-        //Behavior behavior?? = new Behavior_??(  gd, "?? Behavior");
+        Behavior behaviorJsGyro = new Behavior_JsGyro(  gd, "Js With Gyro Behavior");
+        Behavior behaviorHdgTurn = new Behavior_Heading(  gd, "Heading Turn Behavior");
 
         // Create the events - Behavior From, Event, Behavior To
-        //behavior??.addEvent( new Event_ButtonY(gd, behavior??));
+        behaviorHdgTurn.addEvent( new Event_ButtonY(gd, behaviorJsGyro));
+        behaviorJsGyro.addEvent( new Event_ButtonY(gd, behaviorHdgTurn));
 
         // The start state for the state machine
-        //activeBehavior = ??
+        activeBehavior = behaviorJsGyro;
     }
 
     // Do not change this. This stays constant

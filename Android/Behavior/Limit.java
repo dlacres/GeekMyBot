@@ -7,7 +7,7 @@ public class Limit {
     private float max = 0;
     private float min = 0;
 
-    public Limit(float max, float min) {
+    public Limit(float min, float max) {
         this.max = max;
         this.min = min;
     }
@@ -17,7 +17,7 @@ public class Limit {
         this.min = -max;
     }
 
-    float calculate(float in) {
+    public float calculate(float in) {
         float out;
 
         out = in;
@@ -26,11 +26,11 @@ public class Limit {
         return (out);
     }
 
-    void setMax(float max) {
+    public void setMax(float max) {
         this.max = max;
     }
 
-    void setMin(float min) {
+    public void setMin(float min) {
         this.min = min;
     }
 }

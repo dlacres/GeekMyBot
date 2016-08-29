@@ -11,31 +11,31 @@ import java.util.List;
 public class Behavior_Forward implements Behavior {
     // Add code for onEntry. This method is called one time when entering the behavior.
     public void onEntry(){
-        be.enterTime=be.time;
+        gd.enterTime=gd.time;
     }
     // Add code for onExit. This method is called one time when exiting the behavior.
     public void onExit(){
-        be.rightCmd=0.0f;
-        be.leftCmd=0.0f;
+        gd.rightCmd=0.0f;
+        gd.leftCmd=0.0f;
     }
-    // Add code for onStep. This method is called from loop as long as the behavior is active.
-    public void onStep(){
-        //if (be.time<this.timeToStop){
-        //be.rightCmd=this.power_percent/100.0f;
-        //be.leftCmd=this.power_percent/100.0f;
-        be.rightCmd= -0.5f;
-        be.leftCmd=  -0.5f;
+    // Add code for onLoop. This method is called from loop as long as the behavior is active.
+    public void onLoop(){
+        //if (gd.time<this.timeToStop){
+        //gd.rightCmd=this.power_percent/100.0f;
+        //gd.leftCmd=this.power_percent/100.0f;
+        gd.rightCmd= -0.5f;
+        gd.leftCmd=  -0.5f;
    }
 
     // Update with the Behaviors_xx class name. Add initial behavior values.
-    Behaviors_Joystick be;
     private float power_percent;
-    public Behavior_Forward(Behaviors_Joystick be, String behaviorName,
+    GlobalData gd;
+    public Behavior_Forward(GlobalData gd, String behaviorName,
                            float power_percent){
         this.power_percent = power_percent;
 
         // Do not change this code
-        this.be=be;
+        this.gd=gd;
         eventList=new ArrayList<Event>();
         this.behaviorName=behaviorName;
     }

@@ -5,26 +5,25 @@ import java.util.List;
 /**
  * Created by dllempia on 7/20/2015.
  */
-public class Behaviors_Template {
+public class Behaviors_JsTest implements Behaviors {
 
-    // Public SM Inputs and Outputs
+    // Add the behaviors and events
+    Behavior activeBehavior;
+    public Behaviors_JsTest(GlobalData gd){
 
-    // Declare the states and events
+        // Create the behaviors - Input is the name of the behavior for debug
+        Behavior behaviorJsBasic = new Behavior_JsBasic(gd, "Basic Behavior");
+        Behavior behaviorJsGyro = new Behavior_JsGyro(  gd, "Gyro Behavior");
 
-    // Add the states and events used in this state machine
-    public Behaviors_Template(GlobalData gd){
-        // Create the states - Input is the name of the state for debug
-        //Behavior behavior?? = new Behavior_??(  gd, "?? Behavior");
-
-        // Create the events - Behavior From, Event, Behavior To
-        //behavior??.addEvent( new Event_ButtonY(gd, behavior??));
+        // Create the events (lines)
+        behaviorJsGyro.addEvent( new Event_ButtonY( gd, behaviorJsBasic));
+        behaviorJsBasic.addEvent( new Event_ButtonY(gd, behaviorJsGyro));
 
         // The start state for the state machine
-        //activeBehavior = ??
+        activeBehavior = behaviorJsBasic;
     }
 
     // Do not change this. This stays constant
-    Behavior activeBehavior;
     public void onLoop(){
 
         List<Event> el = activeBehavior.getEventList();

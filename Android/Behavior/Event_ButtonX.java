@@ -7,22 +7,21 @@ public class Event_ButtonX implements Event {
 
     // Returning true triggers the event
     public boolean isTriggered(){
-        boolean button_pressed;
-        button_pressed = pressed.calculate(be.buttonX);
+        boolean button_pressed = pressed.calculate(gd.buttonX);
         return(button_pressed);
     }
 
     // This runs if the event is triggered
-    public void onStep(){
+    public void onLoop(){
 
     }
 
     // No change needed
     RiseEdgeTrigger pressed;
     private Behavior toBehavior;
-    Behaviors_Joystick be;
-    Event_ButtonX(Behaviors_Joystick be, Behavior toBehavior){
-        this.be =be;
+    GlobalData gd;
+    Event_ButtonX(GlobalData gd, Behavior toBehavior){
+        this.gd =gd;
         this.toBehavior = toBehavior;
         pressed = new RiseEdgeTrigger();
     }

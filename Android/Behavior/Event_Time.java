@@ -8,22 +8,22 @@ public class Event_Time implements Event {
     // Returning true triggers the event
     public boolean isTriggered(){
         boolean timeToStop;
-        timeToStop = (be.time-be.enterTime) > this.stopTime;
+        timeToStop = (gd.time- gd.enterTime) > this.stopTime;
         return(timeToStop);
     }
 
     // This runs if the event is triggered
-    public void onStep(){
+    public void onLoop(){
 
     }
 
     // No change needed
     RiseEdgeTrigger pressed;
     private Behavior toBehavior;
-    Behaviors_Joystick be;
+    GlobalData gd;
     double stopTime;
-    Event_Time(Behaviors_Joystick be, Behavior toBehavior, double stopTime){
-        this.be =be;
+    Event_Time(GlobalData gd, Behavior toBehavior, double stopTime){
+        this.gd =gd;
         this.stopTime = stopTime;
         this.toBehavior = toBehavior;
         pressed = new RiseEdgeTrigger();

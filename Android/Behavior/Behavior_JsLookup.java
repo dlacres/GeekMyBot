@@ -1,14 +1,12 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
-import com.qualcomm.robotcore.util.Range;
-
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by dllempia on 7/20/2015.
  */
-public class Behavior_JsGyro implements Behavior {
+public class Behavior_JsLookup implements Behavior {
     // Change the name of this behavior (for diagnostics)
     String behaviorName ="Js Gyro";
 
@@ -19,24 +17,45 @@ public class Behavior_JsGyro implements Behavior {
 
     // Add code for onLoop
     public void onLoop(){
-        float kDir=1.0f;
-        float kHdgDot=1.0f/30000.0f;
-        float kSpd=0.5f;
+        //float kHdgDot=1.0f/30000.0f;
+        float kSpd=1.0f;
+        float kDir=0.5f;
+        //float kSpd=0.75f;
+        //float kDir=0.75f;
 
         // Drive calculations using Joystick inputs;
-        float directionCmd = gd.directionJs*kDir - gd.headingDot*kHdgDot;
+        //float directionCmd = gd.directionJs*kDir - gd.headingDot*kHdgDot;
 
-        gd.rightCmd1 =  gd.throttleJs*kSpd - directionCmd;
-        gd.leftCmd1 = gd.throttleJs*kSpd + directionCmd;
+        //gd.rightCmd1 =  gd.throttleJs*kSpd - directionCmd;
+        //gd.leftCmd1 = gd.throttleJs*kSpd + directionCmd;
+
+        float jsX = lookup.calculate(gd.directionJs);
+        float jsY = lookup.calculate(gd.throttleJs);
+
+        gd.debugFloat1=jsY;
+        gd.debugFloat2=jsX;
+
+        gd.rightCmd1 = jsY*kSpd - jsX*kDir;
+        gd.leftCmd1  = jsY*kSpd + jsX*kDir;
 
         gd.rightCmd = lim.calculate(gd.rightCmd1);
         gd.leftCmd = lim.calculate(gd.leftCmd1);
     }
 
+    float [][] jsTable={
+        {0.0f, 0.0f},
+        {0.3f, 0.1f},
+        {0.5f, 0.25f},
+        {0.80f, 0.55f},
+        {1.0f, 1.0f},
+    };
+    float siz=4;
+    Lookup lookup;
     GlobalData gd;
     Limit lim;
-    public Behavior_JsGyro(GlobalData gd, String behaviorName){
+    public Behavior_JsLookup(GlobalData gd, String behaviorName){
         this.lim = new Limit(1.0f);
+        this.lookup = new Lookup(jsTable, siz);
         this.gd =gd;
         eventList=new ArrayList<Event>();
         this.behaviorName = behaviorName;

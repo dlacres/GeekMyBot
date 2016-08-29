@@ -5,7 +5,7 @@ package com.qualcomm.ftcrobotcontroller.geekmybot;
  */
 public interface Event {
 
-    public void onStep();
+    public void onLoop();
     public boolean isTriggered();
     public Behavior getToBehavior();
 }

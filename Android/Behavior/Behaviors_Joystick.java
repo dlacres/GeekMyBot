@@ -5,42 +5,30 @@ import java.util.List;
 /**
  * Created by dllempia on 7/20/2015.
  */
-public class Behaviors_Joystick {
-
-    // SM Inputs and Outputs
-    public float throttleJs, directionJs;
-    public float headingDot, heading;
-    public float rightCmd, leftCmd;
-    public boolean buttonX, buttonY;
-    public double time,enterTime;
-
-    // Declare the states and events
-    Behavior behaviorJsBasic;
-    Behavior behaviorJsGyro;
-    Behavior behaviorForward;
+public class Behaviors_Joystick implements Behaviors {
 
     // Add the behaviors and events
     Behavior activeBehavior;
-    public Behaviors_Joystick(){
+    public Behaviors_Joystick(GlobalData gd){
+
         // Create the behaviors - Input is the name of the behavior for debug
-        behaviorJsBasic = new Behavior_JsBasic(this,"Basic Behavior");
-        behaviorJsGyro = new Behavior_JsGyro(this, "Gyro Behavior");
-        behaviorForward = new Behavior_Forward(this, "Forward Stop Behavior", 45.0f);
+        Behavior behaviorJsBasic = new Behavior_JsBasic(gd, "Js Behavior");
+        Behavior behaviorJsGyro = new Behavior_JsGyro(  gd, "Js Gyro Behavior");
+        Behavior behaviorJsLookup = new Behavior_JsLookup(  gd, "Js Lookup Behavior");
+        Behavior behaviorHeading = new Behavior_Heading(gd, "Heading");
 
         // Create the events (lines)
-        behaviorJsGyro.addEvent( new Event_ButtonY( this, behaviorJsBasic));
-        behaviorJsGyro.addEvent( new Event_ButtonX( this, behaviorForward));
-        behaviorJsBasic.addEvent( new Event_ButtonY(this, behaviorJsGyro));
-        behaviorJsBasic.addEvent( new Event_ButtonX(this, behaviorForward));
-        behaviorForward.addEvent( new Event_Time(   this, behaviorJsBasic, 1.0));
-        behaviorForward.addEvent( new Event_ButtonX(this, behaviorJsBasic));
+        behaviorJsBasic.addEvent( new Event_ButtonY(gd, behaviorHeading));
+        behaviorHeading.addEvent( new Event_ButtonY( gd, behaviorJsGyro));
+        behaviorJsGyro.addEvent( new Event_ButtonY( gd, behaviorJsLookup));
+        behaviorJsLookup.addEvent( new Event_ButtonY( gd, behaviorJsBasic));
 
         // The start state for the state machine
         activeBehavior = behaviorJsBasic;
     }
 
     // Do not change this. This stays constant
-    public void onStep(){
+    public void onLoop(){
 
         List<Event> el = activeBehavior.getEventList();
 
@@ -50,7 +38,7 @@ public class Behaviors_Joystick {
             if (el1.isTriggered()){
                 // If the event happened, run exit, step, and entry code
                 activeBehavior.onExit();
-                el1.onStep();
+                el1.onLoop();
 
                 // Update the active state
                 activeBehavior = el1.getToBehavior();
@@ -59,7 +47,7 @@ public class Behaviors_Joystick {
             }
         }
         // Run active state
-        activeBehavior.onStep();
+        activeBehavior.onLoop();
     }
     public Behavior getActiveBehavior(){
         return(this.activeBehavior);

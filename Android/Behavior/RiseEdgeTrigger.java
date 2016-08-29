@@ -4,8 +4,8 @@ package com.qualcomm.ftcrobotcontroller.geekmybot;
  * Created by dlacres2 on 1/17/2016.
  */
 public class RiseEdgeTrigger {
-    public boolean z1;
-    public boolean out;
+    private boolean z1=false;
+    private boolean out=false;
 
     public RiseEdgeTrigger(){
         this.z1=false;

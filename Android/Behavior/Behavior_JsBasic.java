@@ -9,8 +9,8 @@ import java.util.List;
  * Created by dllempia on 7/20/2015.
  */
 public class Behavior_JsBasic implements Behavior {
-    List <Event> eventList;
-    String stateName="none";
+    // Change the name of this behavior (for diagnostics)
+    String behaviorName="JS Basic";
 
     // Add code for onEntry
     public void onEntry(){
@@ -20,23 +20,25 @@ public class Behavior_JsBasic implements Behavior {
     public void onExit(){
 
     }
-    // Add code for onStep
-    public void onStep(){
+    // Add code for onLoop
+    public void onLoop(){
         // Drive calculations using Joystick inputs;
-        float throttle = sm.throttleJs/2.0f;
-        float direction = sm.directionJs/3.0f;
+        float throttle = gd.throttleJs/2.0f;
+        float direction = gd.directionJs/3.0f;
         float right =  throttle - direction;
         float left = throttle + direction;
-        sm.rightCmd = Range.clip(right, -1, 1);
-        sm.leftCmd = Range.clip(left, -1, 1);
+        gd.rightCmd = Range.clip(right, -1, 1);
+        gd.leftCmd = Range.clip(left, -1, 1);
     }
-    Behaviors_Joystick sm;
-    public Behavior_JsBasic(Behaviors_Joystick sm, String stateName){
-        this.sm=sm;
+    GlobalData gd;
+    List <Event> eventList;
+
+    public Behavior_JsBasic(GlobalData gd, String behaviorName){
+        this.gd = gd;
         eventList=new ArrayList<Event>();
-        this.stateName=stateName;
+        this.behaviorName=behaviorName;
     }
-    public String getName(){return(this.stateName);}
+    public String getName(){return(this.behaviorName);}
     public List<Event> getEventList(){
         return(eventList);
     }
