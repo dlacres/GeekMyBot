@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 1/10/2016.
+ * Created by David Lempia on 1/10/2016.
  */
 public class RateSensor {
     private static final int GYR_Y=0;                              // Gyro Y (IMU pin #4)

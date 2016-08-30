@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 1/17/2016.
+ * Created by David Lempia on 1/17/2016.
  * Integrate around a circle. At 359.999 integrate up to 0.000.
  */
 public class Integrator360 {

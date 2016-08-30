@@ -3,7 +3,7 @@ package com.qualcomm.ftcrobotcontroller.geekmybot;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
  */
 public class Behaviors_Template {
 
@@ -24,7 +24,7 @@ public class Behaviors_Template {
     }
 
     // Do not change this. This stays constant
-    Behavior activeBehavior;
+    private Behavior activeBehavior;
     public void onLoop(){
 
         List<Event> el = activeBehavior.getEventList();

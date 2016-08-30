@@ -3,7 +3,7 @@ package com.qualcomm.ftcrobotcontroller.geekmybot;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
  */
 public class Behaviors_Joystick implements Behaviors {
 
@@ -12,7 +12,7 @@ public class Behaviors_Joystick implements Behaviors {
     public Behaviors_Joystick(GlobalData gd){
 
         // Create the behaviors - Input is the name of the behavior for debug
-        Behavior behaviorJsBasic = new Behavior_JsBasic(gd, "Js Behavior");
+        Behavior behaviorJsBasic = new Behavior_JsArcade(gd, "Js Behavior");
         Behavior behaviorJsGyro = new Behavior_JsGyro(  gd, "Js Gyro Behavior");
         Behavior behaviorJsLookup = new Behavior_JsLookup(  gd, "Js Lookup Behavior");
         Behavior behaviorHeading = new Behavior_Heading(gd, "Heading");

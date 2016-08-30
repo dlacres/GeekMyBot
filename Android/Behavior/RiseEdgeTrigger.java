@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 1/17/2016.
+ * Created by David Lempia on 1/17/2016.
  */
 public class RiseEdgeTrigger {
     private boolean z1=false;

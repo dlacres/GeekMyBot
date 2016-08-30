@@ -3,7 +3,7 @@ package com.qualcomm.ftcrobotcontroller.geekmybot;
 import java.util.List;
 
 /**
- * Created by dllempia on 8/3/2015.
+ * Created by David Lempia on 8/3/2015.
  */
 public interface Behavior {
     void onEntry();

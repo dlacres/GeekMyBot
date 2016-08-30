@@ -6,7 +6,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
+ * Use the left joystick to drive the robot
+ * X is the direction
+ * Y is the throttle
  */
 public class Behavior_JsGyro implements Behavior {
     // Change the name of this behavior (for diagnostics)
@@ -24,10 +27,10 @@ public class Behavior_JsGyro implements Behavior {
         float kSpd=0.5f;
 
         // Drive calculations using Joystick inputs;
-        float directionCmd = gd.directionJs*kDir - gd.headingDot*kHdgDot;
+        float directionCmd = gd.jsLeftX*kDir - gd.headingDot*kHdgDot;
 
-        gd.rightCmd1 =  gd.throttleJs*kSpd - directionCmd;
-        gd.leftCmd1 = gd.throttleJs*kSpd + directionCmd;
+        gd.rightCmd1 =  gd.jsLeftY*kSpd - directionCmd;
+        gd.leftCmd1 = gd.jsLeftY*kSpd + directionCmd;
 
         gd.rightCmd = lim.calculate(gd.rightCmd1);
         gd.leftCmd = lim.calculate(gd.leftCmd1);

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
  *
  * Copy this template and rename it with the name of your behavior. i.e. Behavior_Forward.
  * Inputs and Outputs are put in the Behaviors_xx file. Access them using gd.xx
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Behavior_Template implements Behavior {
     // Change the name of this behavior (for diagnostics)
-    String behaviorName="none";
+    private String behaviorName="none";
 
     // Add code for onEntry. This method is called one time when entering the behavior.
     public void onEntry(){
@@ -30,8 +30,8 @@ public class Behavior_Template implements Behavior {
     }
 
     // Add new classes as needed
-    List <Event> eventList;
-    GlobalData gd;
+    private List <Event> eventList;
+    private GlobalData gd;
     public Behavior_Template(GlobalData gd, String behaviorName){
         this.gd=gd;
         eventList=new ArrayList<Event>();

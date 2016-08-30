@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
+ * Use the left joystick to drive the robot
+ * X is the direction
+ * Y is the throttle
  */
 public class Behavior_JsLookup implements Behavior {
     // Change the name of this behavior (for diagnostics)
@@ -20,17 +23,9 @@ public class Behavior_JsLookup implements Behavior {
         //float kHdgDot=1.0f/30000.0f;
         float kSpd=1.0f;
         float kDir=0.5f;
-        //float kSpd=0.75f;
-        //float kDir=0.75f;
 
-        // Drive calculations using Joystick inputs;
-        //float directionCmd = gd.directionJs*kDir - gd.headingDot*kHdgDot;
-
-        //gd.rightCmd1 =  gd.throttleJs*kSpd - directionCmd;
-        //gd.leftCmd1 = gd.throttleJs*kSpd + directionCmd;
-
-        float jsX = lookup.calculate(gd.directionJs);
-        float jsY = lookup.calculate(gd.throttleJs);
+        float jsX = lookup.calculate(gd.jsLeftX);
+        float jsY = lookup.calculate(gd.jsLeftY);
 
         gd.debugFloat1=jsY;
         gd.debugFloat2=jsX;

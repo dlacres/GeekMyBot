@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 1/17/2016.
+ * Created by David Lempia on 1/17/2016.
  *
  * Notes:
  *   1) deltaTime must be calculated every frame

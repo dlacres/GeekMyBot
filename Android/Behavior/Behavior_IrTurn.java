@@ -5,13 +5,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
  *
- * Copy this template and rename it with the name of your behavior. i.e. Behavior_Forward.
- * Inputs and Outputs are put in the Behaviors_xx file. Access them using gd.xx
- * Add the behavior to the Behaviors_xx file.
- * Add inputs and outputs to the Behaviors_xx file.
- * Pass parameters in through the Event_Template Constructor.
+ * Turn to face the IR Beacon
+ * Drive forward / backward until the signal strength is the commanded signal strength
  */
 public class Behavior_IrTurn implements Behavior {
     // Add code for onEntry. This method is called one time when entering the behavior.

@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 8/2/2015.
+ * Created by David Lempia on 8/2/2015.
  */
 public class Event_Time implements Event {
 

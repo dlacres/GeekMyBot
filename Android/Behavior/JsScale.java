@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 8/12/2016.
+ * Created by David Lempia on 8/12/2016.
  */
 public class JsScale {
 

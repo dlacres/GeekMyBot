@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by dllempia on 7/20/2015.
+ * Created by David Lempia on 7/20/2015.
  *
  * dHat left/right changes the heading command
  * Left joystick y changes throttle
@@ -53,8 +53,8 @@ public class Behavior_Heading implements Behavior {
         gd.debugFloat1=directionCmd;
 
         // Calculate the left and right motor commands
-        gd.rightCmd1 =  gd.throttleJs*kSpd - directionCmd;
-        gd.leftCmd1 = gd.throttleJs*kSpd + directionCmd;
+        gd.rightCmd1 =  gd.jsLeftY*kSpd - directionCmd;
+        gd.leftCmd1 = gd.jsLeftY*kSpd + directionCmd;
 
         // Limit the left and right motor commands. Send back to global data.
         gd.rightCmd = lim.calculate(gd.rightCmd1);

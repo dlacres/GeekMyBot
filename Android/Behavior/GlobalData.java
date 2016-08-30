@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 8/20/2016.
+ * Created by David Lempia on 8/20/2016.
  */
 public class GlobalData {
     public GlobalData(){
@@ -13,7 +13,8 @@ public class GlobalData {
     public float rightCmd=0.0f, leftCmd=0.0f, rightCmd1=0.0f, leftCmd1=0.0f;
 
     // Joystick
-    public float throttleJs=0.0f, directionJs=0.0f;
+    public float jsLeftX, jsLeftY, jsRightX, jsRightY;
+    //public float throttleJs=0.0f, directionJs=0.0f;
     public boolean buttonX, buttonY;
     public boolean dpadRt, dpadLt, dpadUp, dpadDn;
 

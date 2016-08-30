@@ -1,7 +1,7 @@
 package com.qualcomm.ftcrobotcontroller.geekmybot;
 
 /**
- * Created by dlacres2 on 8/2/2015.
+ * Created by David Lempia on 8/2/2015.
  *
  * Copy this template and rename it with the name of your event. i.e. Event_ButtonX.
  * Inputs and Outputs are put in the Behaviors_xx file. Access them using gd.xx
