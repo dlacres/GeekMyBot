@@ -11,8 +11,8 @@ public class Event_ButtonX implements Event {
         return(button_pressed);
     }
 
-    // This runs if the event is triggered
-    public void onLoop(){
+    // This runs only when the event is triggered resulting in a transition between behaviors
+    public void onTransition(){
 
     }
 

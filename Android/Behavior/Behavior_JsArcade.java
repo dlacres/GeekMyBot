@@ -24,7 +24,7 @@ public class Behavior_JsArcade implements Behavior {
     public void onExit(){
 
     }
-    // Add code for onLoop
+    // Add code for onTransition
     public void onLoop(){
         // Drive calculations using Joystick inputs;
         float throttle = gd.jsLeftY/2.0f;

@@ -18,7 +18,7 @@ public class Behavior_JsLookup implements Behavior {
     // Add code for onExit
     public void onExit(){}
 
-    // Add code for onLoop
+    // Add code for onTransition
     public void onLoop(){
         //float kHdgDot=1.0f/30000.0f;
         float kSpd=1.0f;

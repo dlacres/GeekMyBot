@@ -12,7 +12,7 @@ public class Event_ButtonY implements Event {
     }
 
     // This runs if the event is triggered
-    public void onLoop(){
+    public void onTransition(){
 
     }
 

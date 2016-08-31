@@ -13,7 +13,7 @@ public class Event_Time implements Event {
     }
 
     // This runs if the event is triggered
-    public void onLoop(){
+    public void onTransition(){
 
     }
 

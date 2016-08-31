@@ -19,7 +19,7 @@ public class Event_Template implements Event {
     }
 
     // This runs if the event is triggered
-    public void onLoop(){
+    public void onTransition(){
 
     }
 

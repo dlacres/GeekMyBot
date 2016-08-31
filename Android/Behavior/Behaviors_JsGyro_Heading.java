@@ -34,7 +34,7 @@ public class Behaviors_JsGyro_Heading {
             if (el1.isTriggered()){
                 // If the event happened, run exit, step, and entry code
                 activeBehavior.onExit();
-                el1.onLoop();
+                el1.onTransition();
 
                 // Update the active state
                 activeBehavior = el1.getToBehavior();

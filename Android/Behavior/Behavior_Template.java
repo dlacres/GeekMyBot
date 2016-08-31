@@ -24,7 +24,7 @@ public class Behavior_Template implements Behavior {
     public void onExit(){
 
     }
-    // Add code for onLoop. This method is called from loop as long as the behavior is active.
+    // Add code for onTransition. This method is called from loop as long as the behavior is active.
     public void onLoop(){
 
     }
