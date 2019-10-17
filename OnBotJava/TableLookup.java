@@ -11,6 +11,7 @@ public class TableLookup {
   private double num,den;
 //  private double table_1[][];
   double table_1[][]={ // input is always > 0.0. Table lookup is symetric around 0.0
+
       {0.0, 0.0},
       {1.0, 2.0},
       {3.0, 3.0},

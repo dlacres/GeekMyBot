@@ -57,13 +57,8 @@ public class Test_Drive extends OpMode {
         double forward,turn;
         
         forward = gamepad1.right_stick_y;
-        turn=gamepad1.right_stick_x;
-        if (turn<0.0){
-           turn = -js_shaper.calc(-gamepad1.right_stick_x);
-        } else {
-           turn = js_shaper.calc(gamepad1.right_stick_x);
-        }
-        
+        turn=js_shaper.calc(gamepad1.right_stick_x);
+
         robot.leftDrive.setPower(forward-turn);
         robot.rightDrive.setPower(forward+turn);
         
@@ -78,6 +73,5 @@ public class Test_Drive extends OpMode {
     @Override
     public void stop() {
     }
-
 }
 
