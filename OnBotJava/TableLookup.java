@@ -10,7 +10,7 @@ public class TableLookup {
   private int i;
   private double num,den;
 //  private double table_1[][];
-  double table_1[][]={
+  double table_1[][]={ // input is always > 0.0. Table lookup is symetric around 0.0
       {0.0, 0.0},
       {1.0, 2.0},
       {3.0, 3.0},
@@ -27,7 +27,13 @@ public class TableLookup {
       double out = 0.0;
       final int x=0;
       final int y=1;
+      boolean negSign=false;
 
+      if (in<0.0) {
+        in = -in;
+        negSign=true;
+      }
+      
       // Find the x region we are in
       for (i=0; i<(table_1[0].length-1); ++i){
           if (table_1[i][0]<=in && table_1[i+1][0]>in) {
@@ -38,6 +44,8 @@ public class TableLookup {
       den=table_1[i+1][x]-table_1[i][x];
       out=(num*in)/den + table_1[i][y] - (num*table_1[i][x])/den;
 
+      if (negSign) out=-out;
+      
       return(out);
   }
 }
